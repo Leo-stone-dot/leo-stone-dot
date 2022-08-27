@@ -53,3 +53,23 @@ func ToRpcResponse(ctx context.Context, resp Response, fn interface{}) Wrapper {
 func New(wrappers ...Wrapper) *Error{
 
 }
+
+type Response[D any] {
+	St int `json:"st"`
+	Msg string `json:"message"`
+	Data D `json:"data"`
+}
+
+type render interface {
+	Json(int,string,any)
+}
+func HttpWrapper[D any,T render](fn func(c T)(D,error)) func(c T) {
+	return func(c T){
+		data, err := fn(c)
+		if err!=nil {
+			c.Json(http.StatusOk,Response[*Error]{err.Code(),err.Message()})
+			return
+		}
+		c.Json(http.StatusOk,Response[D]{0,"",d})
+	}
+} 
