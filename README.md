@@ -1,4 +1,7 @@
-### Hi there 👋
+# Hi there 👋
+
+- 🔭 I’m currently working on bytedance.
+- ⚡ Fun fact: find cool thing to do.
 
 <!--
 **Leo-stone-dot/leo-stone-dot** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
